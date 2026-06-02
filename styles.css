@@ -1,4 +1,4 @@
-/* Estilos Generales Basicos */
+/* Estilos Base Sencillos */
 * {
     margin: 0;
     padding: 0;
@@ -8,76 +8,143 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
-    padding: 40px 20px;
+    padding: 30px 10px;
     color: #333;
 }
 
-/* Contenedor Principal Centrado */
+/* Contenedor Principal */
 .todo-container {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
-/* Encabezado */
+/* Encabezado elegante pero plano */
 .todo-header {
     background: #4f46e5;
     color: #ffffff;
-    padding: 30px;
+    padding: 30px 20px;
     text-align: center;
 }
 
 .todo-header h1 {
-    font-size: 2em;
+    font-size: 2.2em;
     margin-bottom: 5px;
 }
 
 .todo-header p {
-    font-size: 0.9em;
-    opacity: 0.8;
+    font-size: 0.95em;
+    opacity: 0.85;
 }
 
-/* Formulario de Entrada */
-.input-section {
-    display: flex;
+.main-content {
     padding: 20px;
-    gap: 10px;
-    background: #f9fafb;
-    border-bottom: 1px solid #e5e7eb;
 }
 
+/* Cajas de los 4 Ejercicios */
+.ejercicio-box {
+    background: #f9fafb;
+    border-left: 4px solid #4f46e5;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.ejercicio-box h3 {
+    font-size: 1.15em;
+    margin-bottom: 5px;
+    color: #111827;
+}
+
+.ejercicio-box p {
+    font-size: 0.85em;
+    color: #6b7280;
+    margin-bottom: 12px;
+}
+
+/* Inputs y botones comunes */
+.ejercicio-box input[type="text"],
+.ejercicio-box input[type="number"],
 #nuevaTareaInput {
-    flex: 1;
-    padding: 10px 15px;
+    width: 100%;
+    padding: 10px 12px;
     border: 1px solid #d1d5db;
     border-radius: 4px;
-    font-size: 1em;
+    font-size: 0.95em;
+    margin-bottom: 10px;
 }
 
-.btn-principal {
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-ejercicio, .btn-todo-add {
+    width: 100%;
     background: #4f46e5;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 4px;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
+    font-size: 0.95em;
 }
 
-.btn-principal:hover {
+.btn-ejercicio:hover, .btn-todo-add:hover {
     background: #4338ca;
 }
 
-/* Panel de Estadisticas */
+/* Cajas de resultados dinámicos */
+.resultado-caja {
+    margin-top: 10px;
+    font-size: 0.95em;
+    font-weight: bold;
+    min-height: 20px;
+}
+
+/* Divisor visual */
+.divisor {
+    border: 0;
+    border-top: 2px dashed #e5e7eb;
+    margin: 30px 0;
+}
+
+/* SECCIÓN TO-DO LIST */
+.todo-section h3 {
+    font-size: 1.4em;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.todo-section p {
+    font-size: 0.9em;
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.input-section-todo {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-todo-add {
+    width: auto;
+    padding: 0 20px;
+}
+
+/* Estadísticas */
 .stats-panel {
     display: flex;
     justify-content: space-around;
-    background: #ffffff;
-    padding: 15px;
-    border-bottom: 1px solid #e5e7eb;
+    background: #f3f4f6;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
 }
 
 .stat-box {
@@ -86,73 +153,60 @@ body {
 
 .stat-label {
     display: block;
-    font-size: 0.8em;
+    font-size: 0.75em;
     color: #6b7280;
     text-transform: uppercase;
 }
 
 .stat-num {
-    font-size: 1.4em;
+    font-size: 1.3em;
     font-weight: bold;
     color: #4f46e5;
 }
 
-/* Estructura de la Lista y Tareas */
+/* Renderizado de tareas */
 .todo-list {
     list-style: none;
-    padding: 10px 20px;
+    margin-bottom: 15px;
 }
 
 .todo-item {
     display: flex;
     align-items: center;
-    padding: 12px 0;
+    padding: 10px 5px;
     border-bottom: 1px solid #f3f4f6;
 }
 
-.todo-item:last-child {
-    border-bottom: none;
-}
-
-/* Checkbox manual */
 .check-box {
-    margin-right: 15px;
-    width: 18px;
-    height: 18px;
+    margin-right: 12px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
 }
 
-/* Texto de la tarea */
 .todo-text {
     flex: 1;
-    font-size: 1em;
+    font-size: 0.95em;
 }
 
-/* Estilo visual para tareas completadas */
 .completed .todo-text {
     text-decoration: line-through;
     color: #9ca3af;
 }
 
-/* Boton borrar individual */
 .btn-borrar-item {
     background: none;
     border: none;
     color: #ef4444;
     font-size: 1.2em;
     cursor: pointer;
-    padding: 0 5px;
 }
 
 .btn-borrar-item:hover {
     color: #dc2626;
 }
 
-/* Panel Inferior de Acciones */
 .action-panel {
-    padding: 15px 20px;
-    background: #f9fafb;
-    border-top: 1px solid #e5e7eb;
     text-align: right;
 }
 
@@ -160,10 +214,10 @@ body {
     background: none;
     border: 1px solid #ef4444;
     color: #ef4444;
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 0.85em;
 }
 
 .btn-limpiar:hover {
