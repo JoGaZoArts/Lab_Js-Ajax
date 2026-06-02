@@ -4,7 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratorio de JavaScript</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ==========================================
+           ESTILOS (CSS) INTEGRADOS PARA GITHUB
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        main {
+            padding: 30px 20px;
+        }
+
+        .ejercicio {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 6px;
+        }
+
+        .ejercicio h3 {
+            color: #222;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .ejercicio p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .ejercicio input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            display: block;
+        }
+
+        .ejercicio button {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s ease;
+        }
+
+        .ejercicio button:hover {
+            background: #764ba2;
+        }
+
+        .resultado {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 4px;
+            min-height: 40px;
+            font-size: 0.95em;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #f1f1f1;
+            color: #666;
+            font-size: 0.85em;
+            border-top: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
 
@@ -26,7 +141,7 @@
             <div class="ejercicio">
                 <h3>Ejercicio 2: Mayor de dos números</h3>
                 <p>Ingresa dos números enteros o decimales para evaluar cuál es el mayor.</p>
-                <input type="number" id="numero1" placeholder="Primer número" style="margin-bottom: 10px;">
+                <input type="number" id="numero1" placeholder="Primer número">
                 <input type="number" id="numero2" placeholder="Segundo número">
                 <button onclick="ejercicio2()">Comparar Valores</button>
                 <div id="resultado2" class="resultado"></div>
@@ -55,7 +170,6 @@
     </div>
 
     <script>
-        // Ejercicio 1: Detector de Palíndromos
         function ejercicio1() {
             var textoOriginal = document.getElementById("palindromoInput").value;
             var resultadoDiv = document.getElementById("resultado1");
@@ -97,7 +211,6 @@
             }
         }
 
-        // Ejercicio 2: Mayor de dos números
         function ejercicio2() {
             var n1 = parseFloat(document.getElementById("numero1").value);
             var n2 = parseFloat(document.getElementById("numero2").value);
@@ -120,7 +233,6 @@
             }
         }
 
-        // Ejercicio 3: Vocales que aparecen en una frase
         function ejercicio3() {
             var frase = document.getElementById("frase3Input").value;
             var resultadoDiv = document.getElementById("resultado3");
@@ -159,7 +271,6 @@
             }
         }
 
-        // Ejercicio 4: Conteo de frecuencia de vocales
         function ejercicio4() {
             var frase = document.getElementById("frase4Input").value;
             var resultadoDiv = document.getElementById("resultado4");
