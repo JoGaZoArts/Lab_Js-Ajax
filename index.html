@@ -16,55 +16,79 @@
             <div class="ejercicio">
                 <h3>Ejercicio 1: Detector de Palíndromos</h3>
                 <p>¿Esta palabra se lee igual al derecho y al revés?</p>
-                <input type="text" id="palindromoInput" placeholder="Ej: Oso...">
-                <button onclick="ejercicio1()">Verificar Texto</button>
-                <div id="resultado1" class="resultado"></div>
+                <div class="bloque-interactivo">
+                    <div class="col-izq">
+                        <div id="resultado1" class="resultado"></div>
+                    </div>
+                    <div class="col-der">
+                        <input type="text" id="palindromoInput" placeholder="Ej: Oso...">
+                        <button onclick="ejercicio1()">Verificar Texto</button>
+                    </div>
+                </div>
             </div>
 
             <div class="ejercicio">
                 <h3>Ejercicio 2: Mayor de dos números</h3>
                 <p>¿Cuál de estos 2 números es mayor?</p>
-                <input type="number" id="numero1" placeholder="Primer número" style="margin-bottom: 8px;">
-                <input type="number" id="numero2" placeholder="Segundo número">
-                <button onclick="ejercicio2()">Comparar Valores</button>
-                <div id="resultado2" class="resultado"></div>
+                <div class="bloque-interactivo">
+                    <div class="col-izq">
+                        <div id="resultado2" class="resultado"></div>
+                    </div>
+                    <div class="col-der">
+                        <input type="number" id="numero1" placeholder="Número 1">
+                        <input type="number" id="numero2" placeholder="Número 2">
+                        <button onclick="ejercicio2()">Comparar Valores</button>
+                    </div>
+                </div>
             </div>
 
             <div class="ejercicio">
                 <h3>Ejercicio 3: Vocales en una frase</h3>
                 <p>¿Cuáles son las vocales contenidas en la palabra ingresada?</p>
-                <input type="text" id="frase3Input" placeholder="Escribe tu palabra aquí...">
-                <button onclick="ejercicio3()">Buscar Vocales</button>
-                <div id="resultado3" class="resultado"></div>
+                <div class="bloque-interactivo">
+                    <div class="col-izq">
+                        <div id="resultado3" class="resultado"></div>
+                    </div>
+                    <div class="col-der">
+                        <input type="text" id="frase3Input" placeholder="Escribe aquí...">
+                        <button onclick="ejercicio3()">Buscar Vocales</button>
+                    </div>
+                </div>
             </div>
 
             <div class="ejercicio">
                 <h3>Ejercicio 4: Conteo de vocales</h3>
                 <p>¿Cuántas veces aparece cada vocal en el texto?</p>
-                <input type="text" id="frase4Input" placeholder="Escribe tu frase aquí...">
-                <button onclick="ejercicio4()">Contar Vocales</button>
-                <div id="resultado4" class="resultado"></div>
+                <div class="bloque-interactivo">
+                    <div class="col-izq">
+                        <div id="resultado4" class="resultado"></div>
+                    </div>
+                    <div class="col-der">
+                        <input type="text" id="frase4Input" placeholder="Escribe aquí...">
+                        <button onclick="ejercicio4()">Contar Vocales</button>
+                    </div>
+                </div>
             </div>
 
             <div class="ejercicio ancho-completo">
                 <h3>Módulo AJAX: Inspector de Páginas Web</h3>
                 <p>Introduce una URL para descargar su contenido de forma asincrónica y evaluar el ciclo de vida de la petición HTTP.</p>
-                <input type="text" id="ajaxUrlInput" value="https://jsonplaceholder.typicode.com/todos/1">
-                <button onclick="cargarContenidoAJAX()">Enviar Petición AJAX</button>
+                <input type="text" id="ajaxUrlInput">
+                <button onclick="cargarContenidoAJAX()" style="margin-bottom: 15px;">Enviar Petición AJAX</button>
                 <div class="grid-sub-resultado">
-                    <div class="resultado">
+                    <div class="resultado" style="min-height: auto;">
                         <strong>Flujo de Estados:</strong>
                         <div id="ajaxEstados" style="margin-top: 5px; font-size: 0.9em; color: #1e40af;">0: No iniciado</div>
                     </div>
-                    <div class="resultado">
+                    <div class="resultado" style="min-height: auto;">
                         <strong>Metadatos de Respuesta:</strong>
                         <div id="ajaxCodigo" style="margin-top: 5px; font-weight: bold;"></div>
                         <div id="ajaxCabeceras" style="margin-top: 5px; font-size: 0.8em; white-space: pre-wrap; color: #64748b;"></div>
                     </div>
                 </div>
-                <div class="resultado" style="margin-top: 15px;">
+                <div class="resultado" style="margin-top: 15px; min-height: auto;">
                     <strong>Contenido de la Respuesta:</strong>
-                    <pre id="ajaxContenido" style="margin-top: 5px; max-height: 150px; overflow-y: auto; font-size: 0.8em; background: #f1f5f9; padding: 8px; border-radius: 4px;"></pre>
+                    <pre id="ajaxContenido" style="margin-top: 5px; max-height: 150px; overflow-y: auto; font-size: 0.8em; background: #f1f5f9; padding: 8px; border-radius: 4px; white-space: pre-wrap; font-family: monospace;"></pre>
                 </div>
             </div>
         </main>
