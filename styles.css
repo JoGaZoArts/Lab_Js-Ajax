@@ -4,18 +4,21 @@ body { font-family: 'Segoe UI', sans-serif; background-color: #f4f6f9; padding: 
 header { background: #1e40af; color: #ffffff; padding: 25px 20px; text-align: center; border-bottom: 4px solid #3b82f6; }
 header h1 { font-size: 1.8em; }
 main { padding: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.ejercicio { background: #ffffff; border: 1px solid #f1f5f9; border-left: 4px solid #3b82f6; padding: 20px; border-radius: 4px; display: flex; flex-direction: column; }
+.ejercicio { background: #ffffff; border: 1px solid #f1f5f9; border-left: 4px solid #2563eb; padding: 20px; border-radius: 4px; display: flex; flex-direction: column; }
 .ejercicio h3 { color: #1e3a8a; margin-bottom: 5px; font-size: 1.1em; }
 .ejercicio p { color: #64748b; margin-bottom: 12px; font-size: 0.85em; flex-grow: 1; }
-.ejercicio input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.9em; background-color: #f8fafc; }
-.ejercicio button { background: #2563eb; color: #ffffff; padding: 10px; border: none; border-radius: 4px; font-size: 0.95em; font-weight: bold; cursor: pointer; width: 100%; margin-top: auto; }
+.bloque-interactivo { display: flex; gap: 15px; margin-top: auto; }
+.col-izq, .col-der { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+.ejercicio input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.9em; background-color: #f8fafc; }
+.ejercicio button { background: #2563eb; color: #ffffff; padding: 10px; border: none; border-radius: 4px; font-size: 0.95em; font-weight: bold; cursor: pointer; width: 100%; }
 .ejercicio button:hover { background: #1d4ed8; }
-.resultado { background: #f8fafc; border: 1px dashed #cbd5e1; padding: 10px; margin-top: 12px; border-radius: 4px; min-height: 42px; font-size: 0.85em; }
-.ejercicio.ancho-completo { grid-column: span 2; border-left: 4px solid #10b981; }
+.resultado { background: #f8fafc; border: 1px dashed #cbd5e1; padding: 10px; border-radius: 4px; min-height: 84px; font-size: 0.85em; display: flex; flex-direction: column; justify-content: center; width: 100%; }
+.ejercicio.ancho-completo { grid-column: span 2; border-left: 4px solid #1e40af; }
 .grid-sub-resultado { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 5px; }
 footer { text-align: center; padding: 15px; background: #f8fafc; color: #64748b; font-size: 0.8em; border-top: 1px solid #e2e8f0; }
 @media (max-width: 768px) {
     main { grid-template-columns: 1fr; }
     .ejercicio.ancho-completo { grid-column: auto; }
     .grid-sub-resultado { grid-template-columns: 1fr; }
+    .bloque-interactivo { flex-direction: column-reverse; }
 }
