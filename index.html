@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio - Tecnologías JavaScript y AJAX</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Laboratorio: Tecnologías JavaScript y AJAX</h1>
+            <p>Ejercicios prácticos de JavaScript y AJAX</p>
+        </header>
+
+        <main>
+            <!-- SECCIÓN JAVASCRIPT -->
+            <section class="seccion">
+                <h2>📝 Ejercicios de JavaScript</h2>
+
+                <!-- Ejercicio 1: Detector de Palíndromos -->
+                <div class="ejercicio">
+                    <h3>Ejercicio 1: Detector de Palíndromos</h3>
+                    <p>Detecta si una cadena de texto es un palíndromo (eliminando espacios, acentos y símbolos).</p>
+                    <input type="text" id="palindromoInput" placeholder="Ingresa una cadena..." value="La ruta nos aporta otro paso a la escalera a rocas">
+                    <button onclick="ejercicio1()">Verificar Palíndromo</button>
+                    <div id="resultado1" class="resultado"></div>
+                </div>
+
+                <!-- Ejercicio 2: Mayor de dos números -->
+                <div class="ejercicio">
+                    <h3>Ejercicio 2: Mayor de dos números</h3>
+                    <p>Compara dos números y muestra cuál es el mayor.</p>
+                    <input type="number" id="numero1" placeholder="Primer número" value="15">
+                    <input type="number" id="numero2" placeholder="Segundo número" value="8">
+                    <button onclick="ejercicio2()">Comparar</button>
+                    <div id="resultado2" class="resultado"></div>
+                </div>
+
+                <!-- Ejercicio 3: Vocales que aparecen -->
+                <div class="ejercicio">
+                    <h3>Ejercicio 3: Vocales que aparecen en una frase</h3>
+                    <p>Extrae las vocales únicas presentes en el texto.</p>
+                    <input type="text" id="frase3Input" placeholder="Ingresa una frase..." value="Hola mundo, ¿cómo estás?">
+                    <button onclick="ejercicio3()">Obtener Vocales</button>
+                    <div id="resultado3" class="resultado"></div>
+                </div>
+
+                <!-- Ejercicio 4: Conteo de frecuencia de vocales -->
+                <div class="ejercicio">
+                    <h3>Ejercicio 4: Conteo de frecuencia de vocales</h3>
+                    <p>Cuenta cuántas veces aparece cada vocal en el texto.</p>
+                    <input type="text" id="frase4Input" placeholder="Ingresa una frase..." value="La educación es fundamental para el desarrollo sostenible">
+                    <button onclick="ejercicio4()">Contar Vocales</button>
+                    <div id="resultado4" class="resultado"></div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN AJAX -->
+            <section class="seccion">
+                <h2>🌐 Ejercicios de AJAX</h2>
+
+                <div class="ejercicio-ajax">
+                    <h3>Petición AJAX - XMLHttpRequest</h3>
+                    <p>Introduce una URL para descargar su contenido mediante AJAX.</p>
+                    
+                    <div class="input-group">
+                        <label for="urlInput">URL a cargar:</label>
+                        <input type="text" id="urlInput" placeholder="https://ejemplo.com">
+                        <button id="btnMostrar">Mostrar Contenidos</button>
+                    </div>
+
+                    <div class="ajax-container">
+                        <!-- Estados de la petición -->
+                        <div class="ajax-panel">
+                            <h4>Estados de la petición</h4>
+                            <div id="zonaEstados" class="panel-content"></div>
+                        </div>
+
+                        <!-- Cabeceras HTTP -->
+                        <div class="ajax-panel">
+                            <h4>Cabeceras HTTP de la respuesta</h4>
+                            <div id="zonaCabeceras" class="panel-content"></div>
+                        </div>
+
+                        <!-- Código de estado -->
+                        <div class="ajax-panel">
+                            <h4>Código de estado</h4>
+                            <div id="zonaCodigo" class="panel-content"></div>
+                        </div>
+                    </div>
+
+                    <!-- Contenidos descargados -->
+                    <div class="ajax-panel full-width">
+                        <h4>Contenidos descargados</h4>
+                        <div id="zonaContenidos" class="panel-content"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Laboratorio de JavaScript y AJAX</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
