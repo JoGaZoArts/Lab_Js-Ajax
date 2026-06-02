@@ -1,49 +1,53 @@
 // 1. Detector de Palíndromos
-function ex1() {
-    var txt = document.getElementById("input1").value.toLowerCase().replace(/[\s,.]/g, "");
+function verificarPalindromo() {
+    var txt = document.getElementById("input-palindromo").value.toLowerCase().replace(/[\s,.]/g, "");
     var inv = txt.split("").reverse().join("");
-    var res = document.getElementById("res1");
+    var res = document.getElementById("res-palindromo");
     
-    if(txt.trim() === "") {
-        res.innerHTML = "Error: Caja vacía.";
+    if(txt === "") {
+        res.innerHTML = "Por favor, escribe un texto.";
         res.className = "output-side error";
         return;
     }
     
     if(txt === inv) {
-        res.innerHTML = "Confirmado: Es palíndromo.";
+        res.innerHTML = "¡Sí es un palíndromo!";
         res.className = "output-side success";
     } else {
-        res.innerHTML = "Resultado: No es palíndromo.";
+        res.innerHTML = "No es un palíndromo.";
         res.className = "output-side error";
     }
 }
 
-// 2. Mayor de dos números
-function ex2() {
+// 2. Mayor de dos Números
+function compararNumeros() {
     var n1 = parseFloat(document.getElementById("num1").value);
     var n2 = parseFloat(document.getElementById("num2").value);
-    var res = document.getElementById("res2");
+    var res = document.getElementById("res-numeros");
 
     if (isNaN(n1) || isNaN(n2)) {
-        res.innerHTML = "Error: Faltan números.";
+        res.innerHTML = "Por favor, ingresa ambos números.";
         res.className = "output-side error";
         return;
     }
 
     res.className = "output-side success";
-    if (n1 > n2) res.innerHTML = "El número " + n1 + " es mayor.";
-    else if (n2 > n1) res.innerHTML = "El número " + n2 + " es mayor.";
-    else res.innerHTML = "Ambos números son iguales.";
+    if (n1 > n2) {
+        res.innerHTML = n1 + " es mayor que " + n2;
+    } else if (n2 > n1) {
+        res.innerHTML = n2 + " es mayor que " + n1;
+    } else {
+        res.innerHTML = "Ambos números son iguales (" + n1 + ")";
+    }
 }
 
 // 3. Vocales que aparecen
-function ex3() {
-    var txt = document.getElementById("input3").value.toLowerCase();
-    var res = document.getElementById("res3");
+function extraerVocales() {
+    var txt = document.getElementById("input-vocales-lista").value.toLowerCase();
+    var res = document.getElementById("res-vocales-lista");
     
     if(txt.trim() === "") {
-        res.innerHTML = "Error: Caja vacía.";
+        res.innerHTML = "Por favor, escribe una frase.";
         res.className = "output-side error";
         return;
     }
@@ -57,7 +61,7 @@ function ex3() {
     }
     
     if(encontradas.length > 0) {
-        res.innerHTML = "Vocales detectadas: " + encontradas.sort().join(", ");
+        res.innerHTML = "Vocales encontradas: " + encontradas.sort().join(", ");
         res.className = "output-side success";
     } else {
         res.innerHTML = "No se encontraron vocales.";
@@ -65,18 +69,18 @@ function ex3() {
     }
 }
 
-// 4. Conteo de cada vocal
-function ex4() {
-    var txt = document.getElementById("input4").value.toLowerCase();
-    var res = document.getElementById("res4");
+// 4. Conteo de cada Vocal
+function contarVocales() {
+    var txt = document.getElementById("input-vocales-conteo").value.toLowerCase();
+    var res = document.getElementById("res-vocales-conteo");
     
     if(txt.trim() === "") {
-        res.innerHTML = "Error: Caja vacía.";
+        res.innerHTML = "Por favor, escribe una frase.";
         res.className = "output-side error";
         return;
     }
 
-    var c = {a:0, e:0, i:0, o:0, u:0};
+    var c = {a: 0, e: 0, i: 0, o: 0, u: 0};
     var total = 0;
     for(var i = 0; i < txt.length; i++) {
         if(c[txt[i]] !== undefined) {
@@ -89,45 +93,41 @@ function ex4() {
         res.innerHTML = "A: " + c.a + " | E: " + c.e + " | I: " + c.i + " | O: " + c.o + " | U: " + c.u;
         res.className = "output-side success text-left";
     } else {
-        res.innerHTML = "No hay vocales para contar.";
+        res.innerHTML = "No se encontraron vocales para contar.";
         res.className = "output-side error";
     }
 }
 
-// 5. AJAX con tracking de estados
-function ex5() {
-    var url = document.getElementById("url").value;
-    var txtEst = document.getElementById("estados");
-    var txtCod = document.getElementById("codigo");
-    var txtRes = document.getElementById("respuesta");
+// 5. Petición AJAX con tracking de estados
+function ejecutarAJAX() {
+    var url = document.getElementById("url-ajax").value;
+    var txtEst = document.getElementById("ajax-estados");
+    var txtCod = document.getElementById("ajax-codigo");
+    var txtRes = document.getElementById("ajax-respuesta");
 
     if(url.trim() === "") {
-        txtEst.innerHTML = "Error: URL vacía.";
+        txtEst.innerHTML = "URL vacía.";
         return;
     }
 
     var xhr = new XMLHttpRequest();
-    txtEst.innerHTML = "0";
-    txtCod.innerHTML = "-";
-    txtRes.innerHTML = "Cargando...";
+    txtEst.innerHTML = "0"; 
+    txtCod.innerHTML = "Cargando...";
+    txtRes.innerHTML = "Esperando respuesta...";
 
     xhr.onreadystatechange = function() {
         txtEst.innerHTML += " → " + xhr.readyState;
         
         if (xhr.readyState === 4) {
-            txtCod.innerHTML = xhr.status + " (" + xhr.statusText + ")";
+            txtCod.innerHTML = xhr.status + " " + xhr.statusText;
             if (xhr.status === 200) {
-                txtRes.innerHTML = xhr.responseText.substring(0, 60) + "...";
+                txtRes.innerHTML = xhr.responseText.substring(0, 100) + "...";
             } else {
-                txtRes.innerHTML = "No se pudo acceder al recurso (Posible bloqueo CORS o error de red).";
+                txtRes.innerHTML = "Error de conexión o bloqueo de políticas CORS al leer la URL.";
             }
         }
     };
 
-    try {
-        xhr.open("GET", url, true);
-        xhr.send();
-    } catch(e) {
-        txtRes.innerHTML = "Error al abrir la conexión: " + e.message;
-    }
+    xhr.open("GET", url, true);
+    xhr.send();
 }
