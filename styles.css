@@ -39,3 +39,19 @@ main {
 }
 
 footer { text-align: center; padding: 15px; background: #f8fafc; color: #64748b; font-size: 0.8em; border-top: 1px solid #e2e8f0; }
+
+.ejercicio.ancho-completo {
+    grid-column: span 2;
+    border-left: 4px solid #10b981;
+}
+
+.grid-sub-resultado {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .ejercicio.ancho-completo { grid-column: auto; }
+    .grid-sub-resultado { grid-template-columns: 1fr; }
