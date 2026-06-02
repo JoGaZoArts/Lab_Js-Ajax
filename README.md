@@ -86,5 +86,4 @@ Al estar construido sobre tecnologías nativas del navegador, no requiere gestor
    git clone https://github.com/tu-usuario/tu-repositorio.git
    ```
 2. **Ejecución:** Abre el archivo `index.html` en cualquier navegador moderno. 
-3. **Nota de red:** Para una evaluación óptima de las peticiones del módulo AJAX (evitando bloqueos estrictos de archivos locales), se recomienda levantar el proyecto utilizando un servidor local ligero como *Live Server* en Visual Studio Code.
-4. 
+3. **Nota de red:** Para una evaluación óptima de las peticiones del módulo AJAX (evitando bloqueos estrictos de archivos locales), se recomienda levantar el proyecto utilizando un servidor local ligero como *Live Server* en Visual Studio Code. 
