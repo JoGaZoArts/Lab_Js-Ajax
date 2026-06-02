@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-
     <div class="container">
         <header>
             <h1>Laboratorio. Tecnologías JavaScript y AJAX</h1>
@@ -46,9 +45,10 @@
                 <button onclick="ejercicio4()">Contar Vocales</button>
                 <div id="resultado4" class="resultado"></div>
             </div>
+
             <div class="ejercicio ancho-completo">
                 <h3>Módulo AJAX: Inspector de Páginas Web</h3>
-                <p>Introduce una URL para descargar su contenido de forma asincrónica y evaluar el ciclo de vida de la petición HTTP (Criterios 5 al 9).</p>
+                <p>Introduce una URL para descargar su contenido de forma asincrónica y evaluar el ciclo de vida de la petición HTTP.</p>
                 
                 <input type="text" id="ajaxUrlInput" placeholder="Cargando URL por defecto...">
                 <button onclick="cargarContenidoAJAX()">Enviar Petición AJAX</button>
@@ -66,7 +66,7 @@
                 </div>
                 
                 <div class="resultado" style="margin-top: 15px;">
-                    <strong>Contenido de la Respuesta (Texto Plano para Seguridad XSS):</strong>
+                    <strong>Contenido de la Respuesta:</strong>
                     <pre id="ajaxContenido" style="margin-top: 5px; max-height: 150px; overflow-y: auto; font-size: 0.8em; background: #f1f5f9; padding: 8px; border-radius: 4px;"></pre>
                 </div>
             </div>
