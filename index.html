@@ -2,71 +2,103 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Taller 5 Ejercicios - JS y AJAX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero de Control - JavaScript y AJAX</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <main class="contenedor">
-        <div class="ejercicio">
-            <h3>1. Detector de Palíndromos</h3>
-            <div class="bloque-h">
-                <div class="izquierda">
-                    <input type="text" id="input1" placeholder="Frase aquí...">
-                    <button onclick="ex1()">Probar</button>
-                </div>
-                <div id="res1" class="derecha">Esperando...</div>
-            </div>
-        </div>
+    <header>
+        <h1>Tablero de Control: Desarrollo de Aplicaciones en Red</h1>
+        <p>Laboratorio Práctico de Interfaz y Conectividad</p>
+    </header>
 
-        <div class="ejercicio">
-            <h3>2. Mayor de dos Números</h3>
-            <div class="bloque-h">
-                <div class="izquierda">
-                    <input type="number" id="num1" placeholder="Num 1">
-                    <input type="number" id="num2" placeholder="Num 2">
-                    <button onclick="ex2()">Comparar</button>
-                </div>
-                <div id="res2" class="derecha">Esperando...</div>
-            </div>
-        </div>
+    <main class="dashboard">
 
-        <div class="ejercicio">
-            <h3>3. Vocales que aparecen</h3>
-            <div class="bloque-h">
-                <div class="izquierda">
-                    <input type="text" id="input3" placeholder="Frase aquí...">
-                    <button onclick="ex3()">Extraer</button>
+        <section class="card">
+            <h2>1. Detector de Palíndromos</h2>
+            <div class="card-content">
+                <div class="input-side">
+                    <p class="instruccion">Comprueba si una frase se lee igual al derecho y al revés.</p>
+                    <input type="text" id="input1" placeholder="Ej: Anita lava la tina">
+                    <button onclick="ex1()">Verificar Texto</button>
                 </div>
-                <div id="res3" class="derecha">Esperando...</div>
-            </div>
-        </div>
-
-        <div class="ejercicio">
-            <h3>4. Conteo de cada Vocal</h3>
-            <div class="bloque-h">
-                <div class="izquierda">
-                    <input type="text" id="input4" placeholder="Frase aquí...">
-                    <button onclick="ex4()">Contar</button>
+                <div id="res1" class="output-side pending">
+                    Esperando entrada de datos...
                 </div>
-                <div id="res4" class="derecha text-left">Esperando...</div>
             </div>
-        </div>
+        </section>
 
-        <div class="ejercicio">
-            <h3>5. Petición AJAX (Estados)</h3>
-            <div class="bloque-h">
-                <div class="izquierda">
+        <section class="card">
+            <h2>2. Mayor de dos Números</h2>
+            <div class="card-content">
+                <div class="input-side">
+                    <p class="instruccion">Ingresa dos valores para determinar cuál es el mayor.</p>
+                    <div class="form-group">
+                        <input type="number" id="num1" placeholder="Número 1">
+                        <input type="number" id="num2" placeholder="Número 2">
+                    </div>
+                    <button onclick="ex2()">Comparar Valores</button>
+                </div>
+                <div id="res2" class="output-side pending">
+                    Esperando entrada de datos...
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>3. Vocales que aparecen</h2>
+            <div class="card-content">
+                <div class="input-side">
+                    <p class="instruccion">Extrae una lista con las vocales únicas utilizadas en la frase.</p>
+                    <input type="text" id="input3" placeholder="Ej: Ingeniería de sistemas">
+                    <button onclick="ex3()">Extraer Vocales</button>
+                </div>
+                <div id="res3" class="output-side pending">
+                    Esperando entrada de datos...
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>4. Conteo de cada Vocal</h2>
+            <div class="card-content">
+                <div class="input-side">
+                    <p class="instruccion">Cuenta cuántas veces se repite cada vocal individualmente.</p>
+                    <input type="text" id="input4" placeholder="Ej: Computación en red">
+                    <button onclick="ex4()">Contar Repeticiones</button>
+                </div>
+                <div id="res4" class="output-side pending text-left">
+                    Esperando entrada de datos...
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>5. Petición AJAX (Inspector de Red)</h2>
+            <div class="card-content">
+                <div class="input-side">
+                    <p class="instruccion">Rastrea en tiempo real los cambios de estado (readyState) de la conexión.</p>
                     <input type="text" id="url" value="https://jsonplaceholder.typicode.com/todos/1">
-                    <button onclick="ex5()">Enviar</button>
+                    <button onclick="ex5()">Enviar Petición HTTP</button>
                 </div>
-                <div class="derecha text-left">
-                    <p><strong>Estados:</strong> <span id="estados">-</span></p>
-                    <p><strong>Código:</strong> <span id="codigo">-</span></p>
-                    <p><strong>Respuesta:</strong> <span id="respuesta">-</span></p>
+                <div class="output-side ajax-output">
+                    <div class="ajax-box">
+                        <strong>Historial de Estados (readyState):</strong>
+                        <div id="estados" class="log-text">-</div>
+                    </div>
+                    <div class="ajax-box">
+                        <strong>Código HTTP:</strong>
+                        <div id="codigo" class="log-text">-</div>
+                    </div>
+                    <div class="ajax-box">
+                        <strong>Respuesta (Response Text):</strong>
+                        <pre id="respuesta" class="log-pre">Ninguna</pre>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
     </main>
 
     <script src="script.js"></script>
