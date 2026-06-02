@@ -46,6 +46,30 @@
                 <button onclick="ejercicio4()">Contar Vocales</button>
                 <div id="resultado4" class="resultado"></div>
             </div>
+            <div class="ejercicio ancho-completo">
+                <h3>Módulo AJAX: Inspector de Páginas Web</h3>
+                <p>Introduce una URL para descargar su contenido de forma asincrónica y evaluar el ciclo de vida de la petición HTTP (Criterios 5 al 9).</p>
+                
+                <input type="text" id="ajaxUrlInput" placeholder="Cargando URL por defecto...">
+                <button onclick="cargarContenidoAJAX()">Enviar Petición AJAX</button>
+                
+                <div class="grid-sub-resultado">
+                    <div class="resultado">
+                        <strong>Flujo de Estados:</strong>
+                        <div id="ajaxEstados" style="margin-top: 5px; font-size: 0.9em; color: #1e40af;">0: No iniciado</div>
+                    </div>
+                    <div class="resultado">
+                        <strong>Metadatos de Respuesta:</strong>
+                        <div id="ajaxCodigo" style="margin-top: 5px; font-weight: bold;"></div>
+                        <div id="ajaxCabeceras" style="margin-top: 5px; font-size: 0.8em; white-space: pre-wrap; color: #64748b;"></div>
+                    </div>
+                </div>
+                
+                <div class="resultado" style="margin-top: 15px;">
+                    <strong>Contenido de la Respuesta (Texto Plano para Seguridad XSS):</strong>
+                    <pre id="ajaxContenido" style="margin-top: 5px; max-height: 150px; overflow-y: auto; font-size: 0.8em; background: #f1f5f9; padding: 8px; border-radius: 4px;"></pre>
+                </div>
+            </div>
         </main>
 
         <footer>
