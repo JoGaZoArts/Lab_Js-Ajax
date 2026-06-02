@@ -8,78 +8,50 @@
 </head>
 <body>
 
-    <div class="todo-container">
-        <div class="todo-header">
+    <div class="container">
+        <header>
             <h1>Laboratorio de JavaScript</h1>
-            <p>Ejercicios Algorítmicos y Lista de Tareas</p>
-        </div>
+            <p>Resolución de ejercicios de lógica y cadenas</p>
+        </header>
 
-        <div class="main-content">
-            <div class="ejercicio-box">
+        <main>
+            <div class="ejercicio">
                 <h3>Ejercicio 1: Detector de Palíndromos</h3>
-                <p>Verifica si un texto se lee igual al derecho y al revés.</p>
-                <input type="text" id="palindromoInput" placeholder="Ej: Anás usó tu auto">
-                <button onclick="ejercicio1()" class="btn-ejercicio">Verificar</button>
-                <div id="resultado1" class="resultado-caja"></div>
+                <p>Descubre si una palabra o frase se lee igual al derecho y al revés.</p>
+                <input type="text" id="palindromoInput" placeholder="Ej: Ana lava la tina">
+                <button onclick="ejercicio1()">Verificar Texto</button>
+                <div id="resultado1" class="resultado"></div>
             </div>
 
-            <div class="ejercicio-box">
+            <div class="ejercicio">
                 <h3>Ejercicio 2: Mayor de dos números</h3>
-                <p>Introduce dos valores para determinar cuál es el mayor.</p>
-                <div class="input-row">
-                    <input type="number" id="numero1" placeholder="Número 1">
-                    <input type="number" id="numero2" placeholder="Número 2">
-                </div>
-                <button onclick="ejercicio2()" class="btn-ejercicio">Comparar números</button>
-                <div id="resultado2" class="resultado-caja"></div>
+                <p>Ingresa dos números enteros o decimales para evaluar cuál es el mayor.</p>
+                <input type="number" id="numero1" placeholder="Primer número" style="margin-bottom: 10px;">
+                <input type="number" id="numero2" placeholder="Segundo número">
+                <button onclick="ejercicio2()">Comparar Valores</button>
+                <div id="resultado2" class="resultado"></div>
             </div>
 
-            <div class="ejercicio-box">
+            <div class="ejercicio">
                 <h3>Ejercicio 3: Vocales en una frase</h3>
-                <p>Extrae las vocales únicas que aparecen en el texto.</p>
-                <input type="text" id="frase3Input" placeholder="Escribe algo aquí...">
-                <button onclick="ejercicio3()" class="btn-ejercicio">Buscar Vocales</button>
-                <div id="resultado3" class="resultado-caja"></div>
+                <p>Muestra en pantalla cuáles son las vocales que contiene la frase ingresada.</p>
+                <input type="text" id="frase3Input" placeholder="Escribe tu frase aquí...">
+                <button onclick="ejercicio3()">Buscar Vocales</button>
+                <div id="resultado3" class="resultado"></div>
             </div>
 
-            <div class="ejercicio-box">
-                <h3>Ejercicio 4: Conteo de Vocales</h3>
-                <p>Cuenta cuántas veces se repite cada vocal.</p>
-                <input type="text" id="frase4Input" placeholder="Escribe una frase...">
-                <button onclick="ejercicio4()" class="btn-ejercicio">Contar Frecuencia</button>
-                <div id="resultado4" class="resultado-caja"></div>
+            <div class="ejercicio">
+                <h3>Ejercicio 4: Conteo de frecuencia de vocales</h3>
+                <p>Cuenta cuántas veces aparece cada una de las vocales en tu texto.</p>
+                <input type="text" id="frase4Input" placeholder="Escribe tu frase aquí...">
+                <button onclick="ejercicio4()">Contar Vocales</button>
+                <div id="resultado4" class="resultado"></div>
             </div>
+        </main>
 
-            <hr class="divisor">
-
-            <div class="todo-section">
-                <h3>Mi Lista de Tareas</h3>
-                <p>Organizador diario básico integrado</p>
-                
-                <div class="input-section-todo">
-                    <input type="text" id="nuevaTareaInput" placeholder="Escribe una nueva tarea...">
-                    <button onclick="agregarTarea()" class="btn-todo-add">Agregar</button>
-                </div>
-
-                <div class="stats-panel">
-                    <div class="stat-box">
-                        <span class="stat-label">Totales</span>
-                        <span id="txtTotales" class="stat-num">0</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-label">Terminadas</span>
-                        <span id="txtTerminadas" class="stat-num">0</span>
-                    </div>
-                </div>
-
-                <ul id="listaTareas" class="todo-list">
-                    </ul>
-
-                <div class="action-panel">
-                    <button onclick="limpiarCompletadas()" class="btn-limpiar">Eliminar Terminadas</button>
-                </div>
-            </div>
-        </div>
+        <footer>
+            <p>Desarrollo de Software - Práctica de JavaScript</p>
+        </footer>
     </div>
 
 </body>
