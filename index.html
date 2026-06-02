@@ -3,97 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tablero de Control - JavaScript y AJAX</title>
+    <title>Tablero de Control</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header>
-        <h1>Tablero de Control: Desarrollo de Aplicaciones en Red</h1>
-        <p>Laboratorio Práctico - JavaScript y AJAX</p>
+    <header style="text-align: center; margin-bottom: 20px;">
+        <h1 style="color: #1e3a8a; font-size: 1.5rem;">Tablero de Control: Aplicaciones en Red</h1>
     </header>
 
-    <main class="dashboard">
-
+    <main class="dash">
         <section class="card">
             <h2>1. Detector de Palíndromos</h2>
-            <div class="card-content">
-                <div class="input-side">
-                    <input type="text" id="input-palindromo" placeholder="Escribe una palabra o frase...">
-                    <button onclick="verificarPalindromo()">Verificar Texto</button>
+            <div class="box">
+                <div class="izq">
+                    <input type="text" id="i1" placeholder="Frase...">
+                    <button onclick="ex1()">Verificar</button>
                 </div>
-                <div id="res-palindromo" class="output-side pending">
-                    Esperando datos...
-                </div>
+                <div id="r1" class="der">Esperando...</div>
             </div>
         </section>
 
         <section class="card">
             <h2>2. Mayor de dos Números</h2>
-            <div class="card-content">
-                <div class="input-side">
-                    <div class="form-group">
-                        <input type="number" id="num1" placeholder="Número 1">
-                        <input type="number" id="num2" placeholder="Número 2">
-                    </div>
-                    <button onclick="compararNumeros()">Comparar Valores</button>
+            <div class="box">
+                <div class="izq">
+                    <div class="row"><input type="number" id="n1"><input type="number" id="n2"></div>
+                    <button onclick="ex2()">Comparar</button>
                 </div>
-                <div id="res-numeros" class="output-side pending">
-                    Esperando datos...
-                </div>
+                <div id="r2" class="der">Esperando...</div>
             </div>
         </section>
 
         <section class="card">
             <h2>3. Vocales que aparecen</h2>
-            <div class="card-content">
-                <div class="input-side">
-                    <input type="text" id="input-vocales-lista" placeholder="Escribe una frase...">
-                    <button onclick="extraerVocales()">Extraer Vocales</button>
+            <div class="box">
+                <div class="izq">
+                    <input type="text" id="i3" placeholder="Frase...">
+                    <button onclick="ex3()">Extraer</button>
                 </div>
-                <div id="res-vocales-lista" class="output-side pending">
-                    Esperando datos...
-                </div>
+                <div id="r3" class="der">Esperando...</div>
             </div>
         </section>
 
         <section class="card">
             <h2>4. Conteo de cada Vocal</h2>
-            <div class="card-content">
-                <div class="input-side">
-                    <input type="text" id="input-vocales-conteo" placeholder="Escribe una frase...">
-                    <button onclick="contarVocales()">Contar Repeticiones</button>
+            <div class="box">
+                <div class="izq">
+                    <input type="text" id="i4" placeholder="Frase...">
+                    <button onclick="ex4()">Contar</button>
                 </div>
-                <div id="res-vocales-conteo" class="output-side pending text-left">
-                    Esperando datos...
-                </div>
+                <div id="r4" class="der" style="text-align: left;">Esperando...</div>
             </div>
         </section>
 
         <section class="card">
-            <h2>5. Petición AJAX (Inspector de Red)</h2>
-            <div class="card-content">
-                <div class="input-side">
-                    <input type="text" id="url-ajax" value="https://jsonplaceholder.typicode.com/todos/1">
-                    <button onclick="ejecutarAJAX()">Enviar Petición HTTP</button>
+            <h2>5. Petición AJAX</h2>
+            <div class="box">
+                <div class="izq">
+                    <input type="text" id="u" value="https://jsonplaceholder.typicode.com/todos/1">
+                    <button onclick="ex5()">Enviar HTTP</button>
                 </div>
-                <div class="output-side ajax-output">
-                    <div class="ajax-box">
-                        <strong>Ciclo de Estados (readyState):</strong>
-                        <div id="ajax-estados" class="log-text">-</div>
-                    </div>
-                    <div class="ajax-box">
-                        <strong>Código HTTP (Status):</strong>
-                        <div id="ajax-codigo" class="log-text">-</div>
-                    </div>
-                    <div class="ajax-box">
-                        <strong>Contenido de Respuesta:</strong>
-                        <pre id="ajax-respuesta" class="log-pre">Ninguna</pre>
-                    </div>
+                <div class="der" style="text-align: left; gap: 5px;">
+                    <div><strong>Estados:</strong> <span id="e">-</span></div>
+                    <div><strong>Código:</strong> <span id="c">-</span></div>
+                    <div><strong>Respuesta:</strong> <pre id="p">-</pre></div>
                 </div>
             </div>
         </section>
-
     </main>
 
     <script src="script.js"></script>
