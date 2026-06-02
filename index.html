@@ -2,93 +2,71 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio: JavaScript y AJAX</title>
+    <title>Taller 5 Ejercicios - JS y AJAX</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header>
-        <h1>Tablero de Control: Desarrollo de Aplicaciones en Red</h1>
-        <p>Estudiante: Juan Diego Ladino Ramirez</p>
-    </header>
-
-    <main class="dashboard">
-
-        <section class="card">
-            <h2>1. Detector de Palíndromos</h2>
-            <div class="card-content">
-                <div class="input-side">
-                    <p class="instruccion">Ingresa una frase para comprobar si se lee igual al derecho y al revés.</p>
-                    <input type="text" id="txt-palindromo" placeholder="Ej: Anita lava la tina">
-                    <button onclick="verificarPalindromo()">Verificar Texto</button>
+    <main class="contenedor">
+        <div class="ejercicio">
+            <h3>1. Detector de Palíndromos</h3>
+            <div class="bloque-h">
+                <div class="izquierda">
+                    <input type="text" id="input1" placeholder="Frase aquí...">
+                    <button onclick="ex1()">Probar</button>
                 </div>
-                <div id="out-palindromo" class="output-side pending">
-                    Esperando entrada de datos...
+                <div id="res1" class="derecha">Esperando...</div>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <h3>2. Mayor de dos Números</h3>
+            <div class="bloque-h">
+                <div class="izquierda">
+                    <input type="number" id="num1" placeholder="Num 1">
+                    <input type="number" id="num2" placeholder="Num 2">
+                    <button onclick="ex2()">Comparar</button>
+                </div>
+                <div id="res2" class="derecha">Esperando...</div>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <h3>3. Vocales que aparecen</h3>
+            <div class="bloque-h">
+                <div class="izquierda">
+                    <input type="text" id="input3" placeholder="Frase aquí...">
+                    <button onclick="ex3()">Extraer</button>
+                </div>
+                <div id="res3" class="derecha">Esperando...</div>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <h3>4. Conteo de cada Vocal</h3>
+            <div class="bloque-h">
+                <div class="izquierda">
+                    <input type="text" id="input4" placeholder="Frase aquí...">
+                    <button onclick="ex4()">Contar</button>
+                </div>
+                <div id="res4" class="derecha text-left">Esperando...</div>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <h3>5. Petición AJAX (Estados)</h3>
+            <div class="bloque-h">
+                <div class="izquierda">
+                    <input type="text" id="url" value="https://jsonplaceholder.typicode.com/todos/1">
+                    <button onclick="ex5()">Enviar</button>
+                </div>
+                <div class="derecha text-left">
+                    <p><strong>Estados:</strong> <span id="estados">-</span></p>
+                    <p><strong>Código:</strong> <span id="codigo">-</span></p>
+                    <p><strong>Respuesta:</strong> <span id="respuesta">-</span></p>
                 </div>
             </div>
-        </section>
-
-        <section class="card">
-            <h2>2. Comparación de Números</h2>
-            <div class="card-content">
-                <div class="input-side">
-                    <p class="instruccion">Ingresa dos valores numéricos para determinar cuál es el mayor.</p>
-                    <div class="form-group">
-                        <input type="number" id="num1" placeholder="Número 1">
-                        <input type="number" id="num2" placeholder="Número 2">
-                    </div>
-                    <button onclick="calcularMayor()">Comparar Valores</button>
-                </div>
-                <div id="out-mayor" class="output-side pending">
-                    Esperando entrada de datos...
-                </div>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2>3. Analizador de Vocales</h2>
-            <div class="card-content">
-                <div class="input-side">
-                    <p class="instruccion">Ingresa una frase para extraer las vocales únicas y contar sus repeticiones.</p>
-                    <input type="text" id="txt-vocales" placeholder="Ej: Estructura de aplicaciones">
-                    <button onclick="analizarVocales()">Analizar Frase</button>
-                </div>
-                <div id="out-vocales" class="output-side pending">
-                    Esperando entrada de datos...
-                </div>
-            </div>
-        </section>
-
-        <section class="card broad-card">
-            <h2>4. Inspector de Red (Módulo AJAX)</h2>
-            <div class="card-content">
-                <div class="input-side">
-                    <p class="instruccion">Introduce una URL para iniciar una solicitud asincrónica y rastrear sus estados.</p>
-                    <input type="text" id="url-ajax" value="https://jsonplaceholder.typicode.com/todos/1">
-                    <button onclick="ejecutarAJAX()">Enviar Petición HTTP</button>
-                </div>
-                <div class="output-side ajax-output">
-                    <div class="ajax-box">
-                        <strong>Historial de Estados (readyState):</strong>
-                        <div id="ajax-estados" class="log-text">Ninguna petición iniciada.</div>
-                    </div>
-                    <div class="ajax-box">
-                        <strong>Código de Estado HTTP:</strong>
-                        <div id="ajax-codigo" class="log-text">-</div>
-                    </div>
-                    <div class="ajax-box">
-                        <strong>Cabeceras de la Respuesta (Headers):</strong>
-                        <pre id="ajax-cabeceras" class="log-pre">Ninguna</pre>
-                    </div>
-                    <div class="ajax-box">
-                        <strong>Contenido del Recurso (Response Text):</strong>
-                        <pre id="ajax-contenido" class="log-pre">Ninguno</pre>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        </div>
     </main>
 
     <script src="script.js"></script>
