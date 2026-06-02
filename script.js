@@ -63,3 +63,69 @@ function ejercicio4() {
     res.style.color = "#2c3e50";
     res.innerHTML = "<strong>Conteo:</strong><br>A: " + c.a + " | E: " + c.e + " | I: " + c.i + " | O: " + c.o + " | U: " + c.u;
 }
+// Criterio 5: Al cargar el documento, la URL por defecto es la de la propia página
+document.addEventListener("DOMContentLoaded", function() {
+    var inputUrl = document.getElementById("ajaxUrlInput");
+    if (inputUrl) {
+        inputUrl.value = window.location.href;
+    }
+});
+
+// Criterios 6, 7, 8 y 9: Petición AJAX nativa con XMLHttpRequest
+function cargarContenidoAJAX() {
+    var url = document.getElementById("ajaxUrlInput").value;
+    var divEstados = document.getElementById("ajaxEstados");
+    var divCodigo = document.getElementById("ajaxCodigo");
+    var divCabeceras = document.getElementById("ajaxCabeceras");
+    var preContenido = document.getElementById("ajaxContenido");
+
+    if (!url.trim()) { alert("Por favor, ingresa una URL válida."); return; }
+
+    // Limpiamos los contenedores antes de iniciar
+    divEstados.innerHTML = "0: Objeto creado (No iniciado)";
+    divCodigo.innerHTML = "";
+    divCabeceras.innerHTML = "";
+    preContenido.textContent = "Cargando...";
+
+    var xhr = new XMLHttpRequest();
+    
+    // Nombres de los estados tradicionales de readyState
+    var mapeoEstados = {
+        1: "1: Cargando (open() invocado)",
+        2: "2: Cargado (send() invocado, cabeceras disponibles)",
+        3: "3: Interactivo (Descargando datos parciales)",
+        4: "4: Completado (Operación finalizada)"
+    };
+
+    // Criterio 7: Monitorear el cambio de estados en tiempo real
+    xhr.onreadystatechange = function() {
+        if (mapeoEstados[xhr.readyState]) {
+            divEstados.innerHTML += "<br>" + mapeoEstados[xhr.readyState];
+        }
+
+        // Cuando la petición termina (Estado 4)
+        if (xhr.readyState === 4) {
+            // Criterio 9: Mostrar código numérico y texto de estado HTTP
+            divCodigo.innerHTML = "Código HTTP: " + xhr.status + " / " + xhr.statusText;
+            
+            if (xhr.status === 200 || xhr.status === 0) {
+                divCodigo.style.color = "#10b981"; // Verde éxito
+                
+                // Criterio 8: Obtener y mostrar cabeceras HTTP de la respuesta
+                var headers = xhr.getAllResponseHeaders();
+                divCabeceras.textContent = headers ? headers : "No hay cabeceras disponibles (Origen Local/File).";
+                
+                // Criterio 6: Mostrar el contenido descargado
+                preContenido.textContent = xhr.responseText;
+            } else {
+                divCodigo.style.color = "#ef4444"; // Rojo error
+                divCabeceras.textContent = "No disponibles debido al error.";
+                preContenido.textContent = "Error CORS o de red: No se pudo acceder al contenido de esa URL externa externa desde el navegador.";
+            }
+        }
+    };
+
+    // Inicializar y enviar la petición asincrónica (true)
+    xhr.open("GET", url, true);
+    xhr.send();
+}
