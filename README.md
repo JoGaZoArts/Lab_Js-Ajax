@@ -1,42 +1,30 @@
-Laboratorio: Tecnologías JavaScript y AJAX
-Este repositorio contiene la solución práctica para el laboratorio de la asignatura Diseño de Aplicaciones en Red. El proyecto integra algoritmos síncronos de manipulación de datos en el cliente y un módulo de inspección de red asincrónico utilizando tecnologías web nativas.
-
-🚀 Características del Proyecto
-La aplicación se divide en cinco módulos interactivos organizados en una interfaz limpia y totalmente responsiva:
-
-Ejercicio 1 (Detector de Palíndromos): Algoritmo de inversión de cadenas con rutinas de sanitización para validar la simetría de textos, ignorando espacios, mayúsculas y acentos.
-
-Ejercicio 2 (Mayor de dos números): Control numérico y condicionales lógicos para determinar el valor máximo entre dos variables de entrada.
-
-Ejercicio 3 (Vocales en una frase): Extracción selectiva de caracteres de tipo vocal sin duplicados.
-
-Ejercicio 4 (Conteo de vocales): Mapa de frecuencias dinámico para el cálculo lineal de ocurrencias de cada vocal.
-
-Módulo AJAX (Inspector de Páginas Web): Implementación nativa de XMLHttpRequest que rastrea, registra y muestra en tiempo real los 5 estados del ciclo de vida HTTP (readyState 0 al 4), códigos de estado y cabeceras de respuesta.
-
-📁 Estructura de Archivos
-El proyecto sigue el principio de separación de responsabilidades en tres componentes esenciales:
-
-Plaintext
-├── index.html   # Estructura semántica de la aplicación y maquetación Grid/Flexbox.
-├── styles.css   # Capa de estilos global, paleta azul corporativa y diseño responsivo.
-└── script.js    # Lógica de negocio, sanitización de datos y manejo asincrónico (AJAX).
-🛠️ Tecnologías Utilizadas
-HTML5: Estructuración semántica y formularios de captura.
-
-CSS3: Maquetación moderna basada en CSS Grid, Flexbox y adaptabilidad mediante Media Queries.
-
-Vanilla JavaScript: Lógica pura del lado del cliente sin dependencias ni librerías externas.
-
-AJAX (API XMLHttpRequest): Gestión avanzada de peticiones asincrónicas a red.
-
-📦 Instalación y Despliegue Local
-Al no requerir compiladores ni entornos de ejecución pesados del lado del servidor, el proyecto puede ejecutarse directamente en cualquier navegador web moderno:
-
-Clona este repositorio en tu máquina local:
-
-Bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
-Navega al directorio del proyecto.
-
-Abre el archivo index.html en tu navegador de preferencia o levanta un servidor local ligero (como Live Server en VS Code) para probar el flujo AJAX sin restricciones de origen local.
+Laboratorio: Tecnologías JavaScript y AJAXRepositorio oficial para la solución práctica del laboratorio de la asignatura Diseño de Aplicaciones en Red (7.º Semestre - Ingeniería Informática). Este proyecto implementa algoritmos síncronos de procesamiento en el cliente y un módulo inspector de red asincrónico utilizando exclusivamente tecnologías web nativas.📁 Estructura del ProyectoEl software se diseñó bajo el principio de separación de responsabilidades, distribuyendo el sistema en tres componentes independientes:Plaintext├── index.html   # Estructura semántica del DOM y contenedores adaptativos (Grid/Flexbox).
+├── styles.css   # Capa estética global unificada en paleta azul corporativa.
+└── script.js    # Capa lógica: sanitización de datos, algoritmos y control AJAX.
+🛠️ Especificaciones Técnicas y Citación de CódigoA continuación se estructuran y detallan los componentes lógicos clave desarrollados en JavaScript puro (Vanilla JS).1. Función Centralizada de SanitizaciónPara garantizar la resiliencia del software ante datos corruptos o caracteres especiales, se implementó una rutina de normalización.📌 Código Citado: limpiarTexto(txt)Rutina de filtrado de diacríticos y caracteres especiales mediante recorrido lineal.JavaScriptfunction limpiarTexto(txt) {
+    var orig = "áéíóú", dest = "aeiou", res = "";
+    txt = txt.toLowerCase();
+    for (var i = 0; i < txt.length; i++) {
+        var p = orig.indexOf(txt[i]), c = (p !== -1) ? dest[p] : txt[i];
+        if ((c >= "a" && c <= "z") || (c >= "0" && c <= "9")) res += c;
+    }
+    return res;
+}
+2. Control de Asincronía y Ciclo de Vida HTTP (Módulo AJAX)El núcleo de conectividad de la aplicación utiliza el objeto nativo XMLHttpRequest para realizar peticiones asincrónicas, capturando las mutaciones del flujo en tiempo real.📌 Código Citado: cargarContenidoAJAX()Manejador de eventos de red y lectura de estados HTTP.JavaScriptxhr.onreadystatechange = function() {
+    if (mapeo[xhr.readyState]) est.innerHTML += "<br>" + mapeo[xhr.readyState];
+    if (xhr.readyState === 4) {
+        cod.innerHTML = "Código HTTP: " + xhr.status + " / " + xhr.statusText;
+        if (xhr.status === 200 || xhr.status === 0) {
+            cod.style.color = "#10b981";
+            var headers = xhr.getAllResponseHeaders();
+            cab.textContent = headers ? headers : "No hay cabeceras disponibles (Origen Local).";
+            con.textContent = xhr.responseText;
+        } else {
+            cod.style.color = "#ef4444";
+            cab.textContent = "No disponibles debido al error.";
+            con.textContent = "Error CORS o de red al intentar acceder a la URL.";
+        }
+    }
+};
+📊 Matriz de Monitoreo: Ciclo de Vida AJAXEl módulo asincrónico mapea de forma dinámica el comportamiento del objeto XHR de acuerdo con los siguientes estados estándar:Estado (readyState)Hito del Ciclo de VidaComportamiento en la Interfaz0Objeto CreadoReinicio de contenedores del DOM y estado "No iniciado".1Método open() invocadoRegistro de la URL destino y apertura del canal de transmisión.2Método send() invocadoPetición enviada a la red. Cabeceras HTTP base disponibles.3Descarga e InteractividadRecepción de paquetes de datos parciales de la respuesta.4Operación CompletadaCierre del flujo. Evaluación del estatus (Ej: 200 OK o CORS Error).🚀 Despliegue e Instalación LocalAl estar construido sobre tecnologías nativas del navegador, no requiere gestores de dependencias ni entornos de ejecución complejos en el servidor:Clonar el repositorio:Bashgit clone https://github.com/tu-usuario/tu-repositorio.git
+Ejecución: Abre el archivo index.html en cualquier navegador moderno.Nota de red: Para una evaluación óptima de las peticiones del módulo AJAX (evitando bloqueos estrictos de archivos locales), se recomienda levantar el proyecto utilizando un servidor local ligero como Live Server en Visual Studio Code.
