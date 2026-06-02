@@ -22,4 +22,3 @@ Puedes acceder a la versión desplegada aquí:
 - **Juan Diego Ladino Ramírez**
 - **Asignatura:** Desarrollo de Aplicaciones en Red
 - **Fecha:** 1 de Junio de 2026
-- 
