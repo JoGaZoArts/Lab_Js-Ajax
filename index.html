@@ -5,120 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratorio de JavaScript</title>
     <style>
-        /* ==========================================
-           ESTILOS (CSS) INTEGRADOS PARA GITHUB
-           ========================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #333;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.2em;
-            margin-bottom: 5px;
-        }
-
-        header p {
-            font-size: 1em;
-            opacity: 0.9;
-        }
-
-        main {
-            padding: 30px 20px;
-        }
-
-        .ejercicio {
-            background: #f8f9fa;
-            border-left: 4px solid #667eea;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 6px;
-        }
-
-        .ejercicio h3 {
-            color: #222;
-            margin-bottom: 5px;
-            font-size: 1.2em;
-        }
-
-        .ejercicio p {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 0.9em;
-        }
-
-        .ejercicio input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1em;
-            display: block;
-        }
-
-        .ejercicio button {
-            background: #667eea;
-            color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.2s ease;
-        }
-
-        .ejercicio button:hover {
-            background: #764ba2;
-        }
-
-        .resultado {
-            background: white;
-            border: 1px solid #e0e0e0;
-            padding: 12px;
-            margin-top: 12px;
-            border-radius: 4px;
-            min-height: 40px;
-            font-size: 0.95em;
-            line-height: 1.4;
-            word-wrap: break-word;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #f1f1f1;
-            color: #666;
-            font-size: 0.85em;
-            border-top: 1px solid #ddd;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f6f9; padding: 20px; color: #2c3e50; }
+        .container { max-width: 700px; margin: 20px auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; border: 1px solid #e2e8f0; }
+        header { background: #1e40af; color: #ffffff; padding: 30px 20px; text-align: center; border-bottom: 4px solid #3b82f6; }
+        header h1 { font-size: 2em; margin-bottom: 5px; }
+        main { padding: 25px; }
+        .ejercicio { background: #ffffff; border-left: 4px solid #3b82f6; padding: 20px; margin-bottom: 20px; border-radius: 4px; border-top: 1px solid #f1f5f9; border-right: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9; }
+        .ejercicio h3 { color: #1e3a8a; margin-bottom: 5px; font-size: 1.15em; }
+        .ejercicio p { color: #64748b; margin-bottom: 12px; font-size: 0.85em; }
+        .ejercicio input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.95em; background-color: #f8fafc; }
+        .ejercicio button { background: #2563eb; color: #ffffff; padding: 10px; border: none; border-radius: 4px; font-size: 0.95em; font-weight: bold; cursor: pointer; width: 100%; }
+        .ejercicio button:hover { background: #1d4ed8; }
+        .resultado { background: #f8fafc; border: 1px dashed #cbd5e1; padding: 12px; margin-top: 12px; border-radius: 4px; min-height: 40px; font-size: 0.9em; }
+        footer { text-align: center; padding: 15px; background: #f8fafc; color: #64748b; font-size: 0.8em; border-top: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
@@ -141,7 +41,7 @@
             <div class="ejercicio">
                 <h3>Ejercicio 2: Mayor de dos números</h3>
                 <p>Ingresa dos números enteros o decimales para evaluar cuál es el mayor.</p>
-                <input type="number" id="numero1" placeholder="Primer número">
+                <input type="number" id="numero1" placeholder="Primer número" style="margin-bottom: 8px;">
                 <input type="number" id="numero2" placeholder="Segundo número">
                 <button onclick="ejercicio2()">Comparar Valores</button>
                 <div id="resultado2" class="resultado"></div>
@@ -170,133 +70,74 @@
     </div>
 
     <script>
-        function ejercicio1() {
-            var textoOriginal = document.getElementById("palindromoInput").value;
-            var resultadoDiv = document.getElementById("resultado1");
-            
-            var textoLimpio = "";
-            var textoMinuscula = textoOriginal.toLowerCase();
-            
-            for (var i = 0; i < textoMinuscula.length; i++) {
-                var letra = textoMinuscula[i];
-                
-                if (letra === "á") letra = "a";
-                if (letra === "é") letra = "e";
-                if (letra === "í") letra = "i";
-                if (letra === "ó") letra = "o";
-                if (letra === "ú") letra = "u";
-                
+        // Auxiliar común para limpiar acentos y pasar a minúsculas de forma simple
+        function limpiarTexto(txt) {
+            var origen = "áéíóú", destino = "aeiou", limpio = "";
+            txt = txt.toLowerCase();
+            for (var i = 0; i < txt.length; i++) {
+                var pos = origen.indexOf(txt[i]);
+                var letra = (pos !== -1) ? destino[pos] : txt[i];
                 if ((letra >= "a" && letra <= "z") || (letra >= "0" && letra <= "9")) {
-                    textoLimpio += letra;
+                    limpio += letra;
                 }
             }
+            return limpio;
+        }
+
+        function ejercicio1() {
+            var txt = document.getElementById("palindromoInput").value;
+            var res = document.getElementById("resultado1");
+            var limpio = limpiarTexto(txt);
             
-            if (textoLimpio.length === 0) {
-                resultadoDiv.innerHTML = "Por favor, ingresa un texto válido.";
-                resultadoDiv.style.color = "#ef4444";
-                return;
-            }
+            if (!limpio) { res.innerHTML = "Texto inválido."; res.style.color = "#ef4444"; return; }
             
-            var textoInvertido = "";
-            for (var j = textoLimpio.length - 1; j >= 0; j--) {
-                textoInvertido += textoLimpio[j];
-            }
+            var inv = "";
+            for (var i = limpio.length - 1; i >= 0; i--) inv += limpio[i];
             
-            if (textoLimpio === textoInvertido) {
-                resultadoDiv.innerHTML = "<strong>Resultado:</strong> Es un palíndromo.";
-                resultadoDiv.style.color = "#10b981";
-            } else {
-                resultadoDiv.innerHTML = "<strong>Resultado:</strong> No es un palíndromo.";
-                resultadoDiv.style.color = "#ef4444";
-            }
+            var esPal = (limpio === inv);
+            res.innerHTML = "<strong>Resultado:</strong> " + (esPal ? "Es un palíndromo." : "No es un palíndromo.");
+            res.style.color = esPal ? "#10b981" : "#ef4444";
         }
 
         function ejercicio2() {
             var n1 = parseFloat(document.getElementById("numero1").value);
             var n2 = parseFloat(document.getElementById("numero2").value);
-            var resultadoDiv = document.getElementById("resultado2");
+            var res = document.getElementById("resultado2");
             
-            if (isNaN(n1) || isNaN(n2)) {
-                resultadoDiv.innerHTML = "Por favor, introduce ambos números.";
-                resultadoDiv.style.color = "#ef4444";
-                return;
-            }
+            if (isNaN(n1) || isNaN(n2)) { res.innerHTML = "Ingresa ambos números."; res.style.color = "#ef4444"; return; }
             
-            resultadoDiv.style.color = "#764ba2";
-            
-            if (n1 > n2) {
-                resultadoDiv.innerHTML = "<strong>Resultado:</strong> El número mayor es " + n1;
-            } else if (n2 > n1) {
-                resultadoDiv.innerHTML = "<strong>Resultado:</strong> El número mayor es " + n2;
-            } else {
-                resultadoDiv.innerHTML = "<strong>Resultado:</strong> Ambos números son exactamente iguales.";
-            }
+            res.style.color = "#1e40af";
+            if (n1 > n2) res.innerHTML = "<strong>Resultado:</strong> El mayor es " + n1;
+            else if (n2 > n1) res.innerHTML = "<strong>Resultado:</strong> El mayor es " + n2;
+            else res.innerHTML = "<strong>Resultado:</strong> Son iguales.";
         }
 
         function ejercicio3() {
-            var frase = document.getElementById("frase3Input").value;
-            var resultadoDiv = document.getElementById("resultado3");
+            var txt = document.getElementById("frase3Input").value;
+            var res = document.getElementById("resultado3");
+            if (!txt.trim()) { res.innerHTML = "Escribe una frase."; res.style.color = "#ef4444"; return; }
             
-            if (frase.trim() === "") {
-                resultadoDiv.innerHTML = "Por favor, escribe una frase.";
-                resultadoDiv.style.color = "#ef4444";
-                return;
-            }
-            
-            var fraseMin = frase.toLowerCase();
-            var vocalesEncontradas = [];
-            
-            for (var i = 0; i < fraseMin.length; i++) {
-                var letra = fraseMin[i];
-                
-                if (letra === "á") letra = "a";
-                if (letra === "é") letra = "e";
-                if (letra === "í") letra = "i";
-                if (letra === "ó") letra = "o";
-                if (letra === "ú") letra = "u";
-                
-                if (letra === "a" || letra === "e" || letra === "i" || letra === "o" || letra === "u") {
-                    if (!vocalesEncontradas.includes(letra)) {
-                        vocalesEncontradas.push(letra);
-                    }
+            var limpio = limpiarTexto(txt), vocales = [];
+            for (var i = 0; i < limpio.length; i++) {
+                if ("aeiou".indexOf(limpio[i]) !== -1 && !vocales.includes(limpio[i])) {
+                    vocales.push(limpio[i]);
                 }
             }
-            
-            if (vocalesEncontradas.length > 0) {
-                resultadoDiv.innerHTML = "<strong>Vocales halladas:</strong> " + vocalesEncontradas.join(", ");
-                resultadoDiv.style.color = "#667eea";
-            } else {
-                resultadoDiv.innerHTML = "<strong>Resultado:</strong> No se encontraron vocales en el texto.";
-                resultadoDiv.style.color = "#764ba2";
-            }
+            res.innerHTML = vocales.length ? "<strong>Vocales:</strong> " + vocales.join(", ") : "No hay vocales.";
+            res.style.color = vocales.length ? "#1e40af" : "#cbd5e1";
         }
 
         function ejercicio4() {
-            var frase = document.getElementById("frase4Input").value;
-            var resultadoDiv = document.getElementById("resultado4");
+            var txt = document.getElementById("frase4Input").value;
+            var res = document.getElementById("resultado4");
+            if (!txt.trim()) { res.innerHTML = "Escribe una frase."; res.style.color = "#ef4444"; return; }
             
-            if (frase.trim() === "") {
-                resultadoDiv.innerHTML = "Por favor, introduce una frase.";
-                resultadoDiv.style.color = "#ef4444";
-                return;
+            var limpio = limpiarTexto(txt), c = {a:0, e:0, i:0, o:0, u:0};
+            for (var i = 0; i < limpio.length; i++) {
+                if (c[limpio[i]] !== undefined) c[limpio[i]]++;
             }
-            
-            var fraseMin = frase.toLowerCase();
-            var cantA = 0, cantE = 0, cantI = 0, cantO = 0, cantU = 0;
-            
-            for (var k = 0; k < fraseMin.length; k++) {
-                var letra = fraseMin[k];
-                
-                if (letra === "a" || letra === "á") cantA++;
-                else if (letra === "e" || letra === "é") cantE++;
-                else if (letra === "i" || letra === "í") cantI++;
-                else if (letra === "o" || letra === "ó") cantO++;
-                else if (letra === "u" || letra === "ú") cantU++;
-            }
-            
-            resultadoDiv.style.color = "#333";
-            resultadoDiv.innerHTML = "<strong>Frecuencia total:</strong><br>" +
-                                     "A: " + cantA + " | E: " + cantE + " | I: " + cantI + " | O: " + cantO + " | U: " + cantU;
+            res.style.color = "#2c3e50";
+            res.innerHTML = "<strong>Conteo:</strong><br>A: " + c.a + " | E: " + c.e + " | I: " + c.i + " | O: " + c.o + " | U: " + c.u;
         }
     </script>
 </body>
