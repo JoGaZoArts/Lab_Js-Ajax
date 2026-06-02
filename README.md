@@ -1,7 +1,3 @@
-¡Claro que sí! Un buen README.md es la carta de presentación de cualquier repositorio. Vamos a dejarlo corto, profesional, súper estructurado y directo al grano, reflejando exactamente la estructura limpia y sin comentarios raros que armamos para tus archivos.
-
-Aquí tienes el contenido listo para copiar y pegar en tu archivo README.md:
-
 Laboratorio: Tecnologías JavaScript y AJAX
 Este repositorio contiene la solución práctica para el laboratorio de la asignatura Diseño de Aplicaciones en Red. El proyecto integra algoritmos síncronos de manipulación de datos en el cliente y un módulo de inspección de red asincrónico utilizando tecnologías web nativas.
 
