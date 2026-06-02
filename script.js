@@ -1,138 +1,65 @@
-// Ejercicio 1: Detector de Palíndromos
-function ejercicio1() {
-    var textoOriginal = document.getElementById("palindromoInput").value;
-    var resultadoDiv = document.getElementById("resultado1");
-    
-    var textoLimpio = "";
-    var textoMinuscula = textoOriginal.toLowerCase();
-    
-    // Bucle para limpiar espacios y tildes a mano
-    for (var i = 0; i < textoMinuscula.length; i++) {
-        var letra = textoMinuscula[i];
-        
-        if (letra === "á") letra = "a";
-        if (letra === "é") letra = "e";
-        if (letra === "í") letra = "i";
-        if (letra === "ó") letra = "o";
-        if (letra === "ú") letra = "u";
-        
-        // Conservar letras básicas y números
-        if ((letra >= "a" && letra <= "z") || (letra >= "0" && letra <= "9")) {
-            textoLimpio += letra;
-        }
+// Función global para limpiar texto
+function limpiarTexto(txt) {
+    var origen = "áéíóú", destino = "aeiou", limpio = "";
+    txt = txt.toLowerCase();
+    for (var i = 0; i < txt.length; i++) {
+        var pos = origen.indexOf(txt[i]);
+        var letra = (pos !== -1) ? destino[pos] : txt[i];
+        if ((letra >= "a" && letra <= "z") || (letra >= "0" && letra <= "9")) limpio += letra;
     }
-    
-    if (textoLimpio.length === 0) {
-        resultadoDiv.innerHTML = "Por favor, ingresa un texto válido.";
-        resultadoDiv.style.color = "#ef4444"; // Rojo error
-        return;
-    }
-    
-    // Invertir la cadena
-    var textoInvertido = "";
-    for (var j = textoLimpio.length - 1; j >= 0; j--) {
-        textoInvertido += textoLimpio[j];
-    }
-    
-    // Verificar similitud
-    if (textoLimpio === textoInvertido) {
-        resultadoDiv.innerHTML = "<strong>Resultado:</strong> Es un palíndromo.";
-        resultadoDiv.style.color = "#10b981"; // Verde éxito
-    } else {
-        resultadoDiv.innerHTML = "<strong>Resultado:</strong> No es un palíndromo.";
-        resultadoDiv.style.color = "#ef4444"; // Rojo fallo
-    }
+    return limpio;
 }
 
-// Ejercicio 2: Mayor de dos números
+function ejercicio1() {
+    var txt = document.getElementById("palindromoInput").value;
+    var res = document.getElementById("resultado1");
+    var limpio = limpiarTexto(txt);
+    
+    if (!limpio) { res.innerHTML = "Texto inválido."; res.style.color = "#ef4444"; return; }
+    
+    var inv = "";
+    for (var i = limpio.length - 1; i >= 0; i--) inv += limpio[i];
+    
+    var esPal = (limpio === inv);
+    res.innerHTML = "<strong>Resultado:</strong> " + (esPal ? "Es un palíndromo." : "No es un palíndromo.");
+    res.style.color = esPal ? "#10b981" : "#ef4444";
+}
+
 function ejercicio2() {
     var n1 = parseFloat(document.getElementById("numero1").value);
     var n2 = parseFloat(document.getElementById("numero2").value);
-    var resultadoDiv = document.getElementById("resultado2");
+    var res = document.getElementById("resultado2");
     
-    if (isNaN(n1) || isNaN(n2)) {
-        resultadoDiv.innerHTML = "Por favor, introduce ambos números.";
-        resultadoDiv.style.color = "#ef4444";
-        return;
-    }
+    if (isNaN(n1) || isNaN(n2)) { res.innerHTML = "Ingresa ambos números."; res.style.color = "#ef4444"; return; }
     
-    resultadoDiv.style.color = "#764ba2"; // Color neutro por defecto
-    
-    if (n1 > n2) {
-        resultadoDiv.innerHTML = "<strong>Resultado:</strong> El número mayor es " + n1;
-    } else if (n2 > n1) {
-        resultadoDiv.innerHTML = "<strong>Resultado:</strong> El número mayor es " + n2;
-    } else {
-        resultadoDiv.innerHTML = "<strong>Resultado:</strong> Ambos números son exactamente iguales.";
-    }
+    res.style.color = "#1e40af";
+    if (n1 > n2) res.innerHTML = "<strong>Resultado:</strong> El mayor es " + n1;
+    else if (n2 > n1) res.innerHTML = "<strong>Resultado:</strong> El mayor es " + n2;
+    else res.innerHTML = "<strong>Resultado:</strong> Son iguales.";
 }
 
-// Ejercicio 3: Vocales que aparecen en una frase
 function ejercicio3() {
-    var frase = document.getElementById("frase3Input").value;
-    var resultadoDiv = document.getElementById("resultado3");
+    var txt = document.getElementById("frase3Input").value;
+    var res = document.getElementById("resultado3");
+    if (!txt.trim()) { res.innerHTML = "Escribe una frase."; res.style.color = "#ef4444"; return; }
     
-    if (frase.trim() === "") {
-        resultadoDiv.innerHTML = "Por favor, escribe una frase.";
-        resultadoDiv.style.color = "#ef4444";
-        return;
+    var limpio = limpiarTexto(txt), vocales = [];
+    for (var i = 0; i < limpio.length; i++) {
+        if ("aeiou".indexOf(limpio[i]) !== -1 && !vocales.includes(limpio[i])) vocales.push(limpio[i]);
     }
-    
-    var fraseMin = frase.toLowerCase();
-    var vocalesEncontradas = [];
-    
-    for (var i = 0; i < fraseMin.length; i++) {
-        var letra = fraseMin[i];
-        
-        // Normalizar tildes
-        if (letra === "á") letra = "a";
-        if (letra === "é") letra = "e";
-        if (letra === "í") letra = "i";
-        if (letra === "ó") letra = "o";
-        if (letra === "ú") letra = "u";
-        
-        if (letra === "a" || letra === "e" || letra === "i" || letra === "o" || letra === "u") {
-            // Evitar meter duplicadas en la lista visual
-            if (!vocalesEncontradas.includes(letra)) {
-                vocalesEncontradas.push(letra);
-            }
-        }
-    }
-    
-    if (vocalesEncontradas.length > 0) {
-        resultadoDiv.innerHTML = "<strong>Vocales halladas:</strong> " + vocalesEncontradas.join(", ");
-        resultadoDiv.style.color = "#667eea";
-    } else {
-        resultadoDiv.innerHTML = "<strong>Resultado:</strong> No se encontraron vocales en el texto.";
-        resultadoDiv.style.color = "#764ba2";
-    }
+    res.innerHTML = vocales.length ? "<strong>Vocales:</strong> " + vocales.join(", ") : "No hay vocales.";
+    res.style.color = vocales.length ? "#1e40af" : "#cbd5e1";
 }
 
-// Ejercicio 4: Conteo de frecuencia de vocales
 function ejercicio4() {
-    var frase = document.getElementById("frase4Input").value;
-    var resultadoDiv = document.getElementById("resultado4");
+    var txt = document.getElementById("frase4Input").value;
+    var res = document.getElementById("resultado4");
+    if (!txt.trim()) { res.innerHTML = "Escribe una frase."; res.style.color = "#ef4444"; return; }
     
-    if (frase.trim() === "") {
-        resultadoDiv.innerHTML = "Por favor, introduce una frase.";
-        resultadoDiv.style.color = "#ef4444";
-        return;
+    var limpio = limpiarTexto(txt), c = {a:0, e:0, i:0, o:0, u:0};
+    for (var i = 0; i < limpio.length; i++) {
+        if (c[limpio[i]] !== undefined) c[limpio[i]]++;
     }
-    
-    var fraseMin = frase.toLowerCase();
-    var cantA = 0, cantE = 0, cantI = 0, cantO = 0, cantU = 0;
-    
-    for (var k = 0; k < fraseMin.length; k++) {
-        var letra = fraseMin[k];
-        
-        if (letra === "a" || letra === "á") cantA++;
-        else if (letra === "e" || letra === "é") cantE++;
-        else if (letra === "i" || letra === "í") cantI++;
-        else if (letra === "o" || letra === "ó") cantO++;
-        else if (letra === "u" || letra === "ú") cantU++;
-    }
-    
-    resultadoDiv.style.color = "#333";
-    resultadoDiv.innerHTML = "<strong>Frecuencia total:</strong><br>" +
-                             "A: " + cantA + " | E: " + cantE + " | I: " + cantI + " | O: " + cantO + " | U: " + cantU;
+    res.style.color = "#2c3e50";
+    res.innerHTML = "<strong>Conteo:</strong><br>A: " + c.a + " | E: " + c.e + " | I: " + c.i + " | O: " + c.o + " | U: " + c.u;
 }
