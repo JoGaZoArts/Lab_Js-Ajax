@@ -3,80 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio. Tecnologías JavaScript y AJAX</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Laboratorio: JavaScript y AJAX</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Laboratorio. Tecnologías JavaScript y AJAX</h1>
-        </header>
 
-        <main>
-            <div class="ejercicio">
-                <h3>Ejercicio 1: Detector de Palíndromos</h3>
-                <p>¿Esta palabra se lee igual al derecho y al revés?</p>
-                <input type="text" id="palindromoInput" placeholder="Ej: Oso...">
-                <button onclick="ejercicio1()">Verificar Texto</button>
-                <div id="resultado1" class="resultado"></div>
-            </div>
+    <header>
+        <h1>Tablero de Control: Desarrollo de Aplicaciones en Red</h1>
+        <p>Estudiante: Juan Diego Ladino Ramirez</p>
+    </header>
 
-            <div class="ejercicio">
-                <h3>Ejercicio 2: Mayor de dos números</h3>
-                <p>¿Cuál de estos 2 números es mayor?</p>
-                <input type="number" id="numero1" placeholder="Primer número" style="margin-bottom: 8px;">
-                <input type="number" id="numero2" placeholder="Segundo número">
-                <button onclick="ejercicio2()">Comparar Valores</button>
-                <div id="resultado2" class="resultado"></div>
-            </div>
+    <main class="dashboard">
 
-            <div class="ejercicio">
-                <h3>Ejercicio 3: Vocales en una frase</h3>
-                <p>¿Cuáles son las vocales contenidas en la palabra ingresada?</p>
-                <input type="text" id="frase3Input" placeholder="Escribe tu palabra aquí...">
-                <button onclick="ejercicio3()">Buscar Vocales</button>
-                <div id="resultado3" class="resultado"></div>
-            </div>
-
-            <div class="ejercicio">
-                <h3>Ejercicio 4: Conteo de vocales</h3>
-                <p>¿Cuántas veces aparece cada vocal en el texto?</p>
-                <input type="text" id="frase4Input" placeholder="Escribe tu frase aquí...">
-                <button onclick="ejercicio4()">Contar Vocales</button>
-                <div id="resultado4" class="resultado"></div>
-            </div>
-
-            <div class="ejercicio ancho-completo">
-                <h3>Módulo AJAX: Inspector de Páginas Web</h3>
-                <p>Introduce una URL para descargar su contenido de forma asincrónica y evaluar el ciclo de vida de la petición HTTP.</p>
-                
-                <input type="text" id="ajaxUrlInput" placeholder="Cargando URL por defecto...">
-                <button onclick="cargarContenidoAJAX()">Enviar Petición AJAX</button>
-                
-                <div class="grid-sub-resultado">
-                    <div class="resultado">
-                        <strong>Flujo de Estados:</strong>
-                        <div id="ajaxEstados" style="margin-top: 5px; font-size: 0.9em; color: #1e40af;">0: No iniciado</div>
-                    </div>
-                    <div class="resultado">
-                        <strong>Metadatos de Respuesta:</strong>
-                        <div id="ajaxCodigo" style="margin-top: 5px; font-weight: bold;"></div>
-                        <div id="ajaxCabeceras" style="margin-top: 5px; font-size: 0.8em; white-space: pre-wrap; color: #64748b;"></div>
-                    </div>
+        <section class="card">
+            <h2>1. Detector de Palíndromos</h2>
+            <div class="card-content">
+                <div class="input-side">
+                    <p class="instruccion">Ingresa una frase para comprobar si se lee igual al derecho y al revés.</p>
+                    <input type="text" id="txt-palindromo" placeholder="Ej: Anita lava la tina">
+                    <button onclick="verificarPalindromo()">Verificar Texto</button>
                 </div>
-                
-                <div class="resultado" style="margin-top: 15px;">
-                    <strong>Contenido de la Respuesta:</strong>
-                    <pre id="ajaxContenido" style="margin-top: 5px; max-height: 150px; overflow-y: auto; font-size: 0.8em; background: #f1f5f9; padding: 8px; border-radius: 4px;"></pre>
+                <div id="out-palindromo" class="output-side pending">
+                    Esperando entrada de datos...
                 </div>
             </div>
-        </main>
+        </section>
 
-        <footer>
-            <p>Diseño de Aplicaciones en Red - Laboratorio. Tecnologías JavaScript y AJAX</p>
-        </footer>
-    </div>
+        <section class="card">
+            <h2>2. Comparación de Números</h2>
+            <div class="card-content">
+                <div class="input-side">
+                    <p class="instruccion">Ingresa dos valores numéricos para determinar cuál es el mayor.</p>
+                    <div class="form-group">
+                        <input type="number" id="num1" placeholder="Número 1">
+                        <input type="number" id="num2" placeholder="Número 2">
+                    </div>
+                    <button onclick="calcularMayor()">Comparar Valores</button>
+                </div>
+                <div id="out-mayor" class="output-side pending">
+                    Esperando entrada de datos...
+                </div>
+            </div>
+        </section>
 
-    <script src="./script.js"></script>
+        <section class="card">
+            <h2>3. Analizador de Vocales</h2>
+            <div class="card-content">
+                <div class="input-side">
+                    <p class="instruccion">Ingresa una frase para extraer las vocales únicas y contar sus repeticiones.</p>
+                    <input type="text" id="txt-vocales" placeholder="Ej: Estructura de aplicaciones">
+                    <button onclick="analizarVocales()">Analizar Frase</button>
+                </div>
+                <div id="out-vocales" class="output-side pending">
+                    Esperando entrada de datos...
+                </div>
+            </div>
+        </section>
+
+        <section class="card broad-card">
+            <h2>4. Inspector de Red (Módulo AJAX)</h2>
+            <div class="card-content">
+                <div class="input-side">
+                    <p class="instruccion">Introduce una URL para iniciar una solicitud asincrónica y rastrear sus estados.</p>
+                    <input type="text" id="url-ajax" value="https://jsonplaceholder.typicode.com/todos/1">
+                    <button onclick="ejecutarAJAX()">Enviar Petición HTTP</button>
+                </div>
+                <div class="output-side ajax-output">
+                    <div class="ajax-box">
+                        <strong>Historial de Estados (readyState):</strong>
+                        <div id="ajax-estados" class="log-text">Ninguna petición iniciada.</div>
+                    </div>
+                    <div class="ajax-box">
+                        <strong>Código de Estado HTTP:</strong>
+                        <div id="ajax-codigo" class="log-text">-</div>
+                    </div>
+                    <div class="ajax-box">
+                        <strong>Cabeceras de la Respuesta (Headers):</strong>
+                        <pre id="ajax-cabeceras" class="log-pre">Ninguna</pre>
+                    </div>
+                    <div class="ajax-box">
+                        <strong>Contenido del Recurso (Response Text):</strong>
+                        <pre id="ajax-contenido" class="log-pre">Ninguno</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
