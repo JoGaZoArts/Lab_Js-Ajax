@@ -3,76 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tablero de Control</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Laboratorio. Tecnologías JavaScript y AJAX</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Laboratorio. Tecnologías JavaScript y AJAX</h1>
+        </header>
 
-    <header style="text-align: center; margin-bottom: 20px;">
-        <h1 style="color: #1e3a8a; font-size: 1.5rem;">Tablero de Control: Aplicaciones en Red</h1>
-    </header>
-
-    <main class="dash">
-        <section class="card">
-            <h2>1. Detector de Palíndromos</h2>
-            <div class="box">
-                <div class="izq">
-                    <input type="text" id="i1" placeholder="Frase...">
-                    <button onclick="ex1()">Verificar</button>
-                </div>
-                <div id="r1" class="der">Esperando...</div>
+        <main>
+            <div class="ejercicio">
+                <h3>Ejercicio 1: Detector de Palíndromos</h3>
+                <p>¿Esta palabra se lee igual al derecho y al revés?</p>
+                <input type="text" id="palindromoInput" placeholder="Ej: Oso...">
+                <button onclick="ejercicio1()">Verificar Texto</button>
+                <div id="resultado1" class="resultado"></div>
             </div>
-        </section>
 
-        <section class="card">
-            <h2>2. Mayor de dos Números</h2>
-            <div class="box">
-                <div class="izq">
-                    <div class="row"><input type="number" id="n1"><input type="number" id="n2"></div>
-                    <button onclick="ex2()">Comparar</button>
-                </div>
-                <div id="r2" class="der">Esperando...</div>
+            <div class="ejercicio">
+                <h3>Ejercicio 2: Mayor de dos números</h3>
+                <p>¿Cuál de estos 2 números es mayor?</p>
+                <input type="number" id="numero1" placeholder="Primer número" style="margin-bottom: 8px;">
+                <input type="number" id="numero2" placeholder="Segundo número">
+                <button onclick="ejercicio2()">Comparar Valores</button>
+                <div id="resultado2" class="resultado"></div>
             </div>
-        </section>
 
-        <section class="card">
-            <h2>3. Vocales que aparecen</h2>
-            <div class="box">
-                <div class="izq">
-                    <input type="text" id="i3" placeholder="Frase...">
-                    <button onclick="ex3()">Extraer</button>
-                </div>
-                <div id="r3" class="der">Esperando...</div>
+            <div class="ejercicio">
+                <h3>Ejercicio 3: Vocales en una frase</h3>
+                <p>¿Cuáles son las vocales contenidas en la palabra ingresada?</p>
+                <input type="text" id="frase3Input" placeholder="Escribe tu palabra aquí...">
+                <button onclick="ejercicio3()">Buscar Vocales</button>
+                <div id="resultado3" class="resultado"></div>
             </div>
-        </section>
 
-        <section class="card">
-            <h2>4. Conteo de cada Vocal</h2>
-            <div class="box">
-                <div class="izq">
-                    <input type="text" id="i4" placeholder="Frase...">
-                    <button onclick="ex4()">Contar</button>
-                </div>
-                <div id="r4" class="der" style="text-align: left;">Esperando...</div>
+            <div class="ejercicio">
+                <h3>Ejercicio 4: Conteo de vocales</h3>
+                <p>¿Cuántas veces aparece cada vocal en el texto?</p>
+                <input type="text" id="frase4Input" placeholder="Escribe tu frase aquí...">
+                <button onclick="ejercicio4()">Contar Vocales</button>
+                <div id="resultado4" class="resultado"></div>
             </div>
-        </section>
 
-        <section class="card">
-            <h2>5. Petición AJAX</h2>
-            <div class="box">
-                <div class="izq">
-                    <input type="text" id="u" value="https://jsonplaceholder.typicode.com/todos/1">
-                    <button onclick="ex5()">Enviar HTTP</button>
+            <div class="ejercicio ancho-completo">
+                <h3>Módulo AJAX: Inspector de Páginas Web</h3>
+                <p>Introduce una URL para descargar su contenido de forma asincrónica y evaluar el ciclo de vida de la petición HTTP.</p>
+                <input type="text" id="ajaxUrlInput" value="https://jsonplaceholder.typicode.com/todos/1">
+                <button onclick="cargarContenidoAJAX()">Enviar Petición AJAX</button>
+                <div class="grid-sub-resultado">
+                    <div class="resultado">
+                        <strong>Flujo de Estados:</strong>
+                        <div id="ajaxEstados" style="margin-top: 5px; font-size: 0.9em; color: #1e40af;">0: No iniciado</div>
+                    </div>
+                    <div class="resultado">
+                        <strong>Metadatos de Respuesta:</strong>
+                        <div id="ajaxCodigo" style="margin-top: 5px; font-weight: bold;"></div>
+                        <div id="ajaxCabeceras" style="margin-top: 5px; font-size: 0.8em; white-space: pre-wrap; color: #64748b;"></div>
+                    </div>
                 </div>
-                <div class="der" style="text-align: left; gap: 5px;">
-                    <div><strong>Estados:</strong> <span id="e">-</span></div>
-                    <div><strong>Código:</strong> <span id="c">-</span></div>
-                    <div><strong>Respuesta:</strong> <pre id="p">-</pre></div>
+                <div class="resultado" style="margin-top: 15px;">
+                    <strong>Contenido de la Respuesta:</strong>
+                    <pre id="ajaxContenido" style="margin-top: 5px; max-height: 150px; overflow-y: auto; font-size: 0.8em; background: #f1f5f9; padding: 8px; border-radius: 4px;"></pre>
                 </div>
             </div>
-        </section>
-    </main>
+        </main>
 
-    <script src="script.js"></script>
+        <footer>
+            <p>Diseño de Aplicaciones en Red - Laboratorio. Tecnologías JavaScript y AJAX</p>
+        </footer>
+    </div>
+
+    <script src="./script.js"></script>
 </body>
 </html>
