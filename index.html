@@ -10,7 +10,7 @@
 
     <header>
         <h1>Tablero de Control: Desarrollo de Aplicaciones en Red</h1>
-        <p>Laboratorio Práctico de Interfaz y Conectividad</p>
+        <p>Laboratorio Práctico - JavaScript y AJAX</p>
     </header>
 
     <main class="dashboard">
@@ -19,12 +19,11 @@
             <h2>1. Detector de Palíndromos</h2>
             <div class="card-content">
                 <div class="input-side">
-                    <p class="instruccion">Comprueba si una frase se lee igual al derecho y al revés.</p>
-                    <input type="text" id="input1" placeholder="Ej: Anita lava la tina">
-                    <button onclick="ex1()">Verificar Texto</button>
+                    <input type="text" id="input-palindromo" placeholder="Escribe una palabra o frase...">
+                    <button onclick="verificarPalindromo()">Verificar Texto</button>
                 </div>
-                <div id="res1" class="output-side pending">
-                    Esperando entrada de datos...
+                <div id="res-palindromo" class="output-side pending">
+                    Esperando datos...
                 </div>
             </div>
         </section>
@@ -33,15 +32,14 @@
             <h2>2. Mayor de dos Números</h2>
             <div class="card-content">
                 <div class="input-side">
-                    <p class="instruccion">Ingresa dos valores para determinar cuál es el mayor.</p>
                     <div class="form-group">
                         <input type="number" id="num1" placeholder="Número 1">
                         <input type="number" id="num2" placeholder="Número 2">
                     </div>
-                    <button onclick="ex2()">Comparar Valores</button>
+                    <button onclick="compararNumeros()">Comparar Valores</button>
                 </div>
-                <div id="res2" class="output-side pending">
-                    Esperando entrada de datos...
+                <div id="res-numeros" class="output-side pending">
+                    Esperando datos...
                 </div>
             </div>
         </section>
@@ -50,12 +48,11 @@
             <h2>3. Vocales que aparecen</h2>
             <div class="card-content">
                 <div class="input-side">
-                    <p class="instruccion">Extrae una lista con las vocales únicas utilizadas en la frase.</p>
-                    <input type="text" id="input3" placeholder="Ej: Ingeniería de sistemas">
-                    <button onclick="ex3()">Extraer Vocales</button>
+                    <input type="text" id="input-vocales-lista" placeholder="Escribe una frase...">
+                    <button onclick="extraerVocales()">Extraer Vocales</button>
                 </div>
-                <div id="res3" class="output-side pending">
-                    Esperando entrada de datos...
+                <div id="res-vocales-lista" class="output-side pending">
+                    Esperando datos...
                 </div>
             </div>
         </section>
@@ -64,12 +61,11 @@
             <h2>4. Conteo de cada Vocal</h2>
             <div class="card-content">
                 <div class="input-side">
-                    <p class="instruccion">Cuenta cuántas veces se repite cada vocal individualmente.</p>
-                    <input type="text" id="input4" placeholder="Ej: Computación en red">
-                    <button onclick="ex4()">Contar Repeticiones</button>
+                    <input type="text" id="input-vocales-conteo" placeholder="Escribe una frase...">
+                    <button onclick="contarVocales()">Contar Repeticiones</button>
                 </div>
-                <div id="res4" class="output-side pending text-left">
-                    Esperando entrada de datos...
+                <div id="res-vocales-conteo" class="output-side pending text-left">
+                    Esperando datos...
                 </div>
             </div>
         </section>
@@ -78,22 +74,21 @@
             <h2>5. Petición AJAX (Inspector de Red)</h2>
             <div class="card-content">
                 <div class="input-side">
-                    <p class="instruccion">Rastrea en tiempo real los cambios de estado (readyState) de la conexión.</p>
-                    <input type="text" id="url" value="https://jsonplaceholder.typicode.com/todos/1">
-                    <button onclick="ex5()">Enviar Petición HTTP</button>
+                    <input type="text" id="url-ajax" value="https://jsonplaceholder.typicode.com/todos/1">
+                    <button onclick="ejecutarAJAX()">Enviar Petición HTTP</button>
                 </div>
                 <div class="output-side ajax-output">
                     <div class="ajax-box">
-                        <strong>Historial de Estados (readyState):</strong>
-                        <div id="estados" class="log-text">-</div>
+                        <strong>Ciclo de Estados (readyState):</strong>
+                        <div id="ajax-estados" class="log-text">-</div>
                     </div>
                     <div class="ajax-box">
-                        <strong>Código HTTP:</strong>
-                        <div id="codigo" class="log-text">-</div>
+                        <strong>Código HTTP (Status):</strong>
+                        <div id="ajax-codigo" class="log-text">-</div>
                     </div>
                     <div class="ajax-box">
-                        <strong>Respuesta (Response Text):</strong>
-                        <pre id="respuesta" class="log-pre">Ninguna</pre>
+                        <strong>Contenido de Respuesta:</strong>
+                        <pre id="ajax-respuesta" class="log-pre">Ninguna</pre>
                     </div>
                 </div>
             </div>
